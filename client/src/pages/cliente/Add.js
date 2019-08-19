@@ -141,7 +141,6 @@ class CadastroClientes extends Component {
     const response = await api.get(`/cidades/${uf}`);
     this.setState({ endereco: { ...this.state.endereco, uf: e.target.value } });
     this.setState({ cidades: response.data });
-    console.log(this.state);
   }
 
   handleChangeCEP = async e => {
@@ -151,7 +150,6 @@ class CadastroClientes extends Component {
 
     if (cepSemMascara.length === 8) {
       const responseCep = await api.get(`/cep/${cepSemMascara}`);
-      console.log(responseCep.data);
 
       if (responseCep.data) {
         const responseCidades = await api.get(`/cidades/${responseCep.data.uf}`);
@@ -159,7 +157,6 @@ class CadastroClientes extends Component {
         const endereco = responseCep.data;
         this.setState({ endereco: { cidade: endereco.idCidade, ...endereco } });
       }
-      console.log(this.state);
     }
   }
 
@@ -222,7 +219,7 @@ class CadastroClientes extends Component {
             </Fab>
           </Grid>
         </Grid>
-        <ValidatorForm ref="form" onSubmit={this.handlerSubmit} autoComplete="off" onError={errors => console.log(errors)} >
+        <ValidatorForm ref="form" onSubmit={this.handlerSubmit} autoComplete="off">
 
           <FormularioCliente
             nome={this.state.nome}
