@@ -1,0 +1,39 @@
+version: '2'
+services: 
+  db:
+    image: mysql:5.7.27
+    environment:
+      - MYSQL_ROOT_PASSWORD=@Admin123
+      - MYSQL_DATABASE=suritec
+    networks:
+      - minha-rede
+    container_name: db
+  servidor-agenda:
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    container_name: servidor-agenda
+    ports:
+      - "8080:8080"
+    networks:
+      - minha-rede
+    depends_on:
+      - db
+  frontend:
+    build: 
+      context: .
+      dockerfile:  ./frontend/Dockerfile    
+    container_name: frontend
+    ports:
+      - "80:80"
+    networks:
+      - minha-rede
+    depends_on:
+      - servidor-agenda
+
+networks: 
+  minha-rede:
+    driver: bridge
+    
+
+
