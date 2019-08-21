@@ -228,37 +228,21 @@ class CadastroClientes extends Component {
             onChangeCPF={e => this.setState({ cpf: e.target.value })} />
 
           <FormularioEndereco
-            cep={this.state.endereco.cep}
-            handleChangeCEP={this.handleChangeCEP}
-            logradouro={this.state.endereco.logradouro}
+            {...this}
             handleLogradouro={e => this.setState({ endereco: { ...this.state.endereco, logradouro: e.target.value } })}
-            bairro={this.state.endereco.bairro}
             handleBairro={e => this.setState({ endereco: { ...this.state.endereco, bairro: e.target.value } })}
-            complemento={this.state.endereco.complemento}
             handleComplemento={e => this.setState({ endereco: { ...this.state.endereco, complemento: e.target.value } })}
-            uf={this.state.endereco.uf}
-            handleChangeUf={this.handleChangeUf}
-            cidade={this.state.endereco.cidade}
             handleCidade={e => this.setState({ endereco: { ...this.state.endereco, cidade: e.target.value } })}
-            cidades={this.state.cidades}
           />
 
           <FormularioTelefone
-            numero={this.state.numero}
+            {...this}
             handlenumero={e => this.setState({ numero: e.target.value })}
-            tipo={this.state.tipo}
-            handletipo={e => this.setState({ tipo: e.target.value })}
-            handleAddTelefone={this.handleAddTelefone}
-            telefones={this.state.telefones}
-            handleDeleteTelefone={this.handleDeleteTelefone}
-          />
+            handletipo={e => this.setState({ tipo: e.target.value })} />
 
           <FormularioEmail
-            email={this.state.email}
-            handleEmail={e => this.setState({ email: e.target.value })}
-            handleAddEmail={this.handleAddEmail}
-            emails={this.state.emails}
-            handleDeleteEmail={this.handleDeleteEmail}
+            {...this}            
+            handleEmail={e => this.setState({ email: e.target.value })}            
           />
 
           <Grid item xs={12} container direction="row" justify="space-between">

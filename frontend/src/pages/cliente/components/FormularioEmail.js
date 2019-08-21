@@ -30,10 +30,9 @@ const styles = {
 
 class FormularioEmail extends Component {
 
-
-  constructor({ props, classes }) {
+  constructor(props) {
     super(props);
-    this.classes = classes;
+    this.classes =  props.classes;
   }
 
   render() {
@@ -49,10 +48,8 @@ class FormularioEmail extends Component {
               name="email"
               label="E-mail:"
               id="email"
-              value={this.props.email}
+              value={this.props.state.email}
               onChange={this.props.handleEmail}
-            // validators={['required', 'isEmail']}
-            // errorMessages={['E-mail é obrigatório', 'Informe um e-mail valido.']}
             />
 
           </Grid>
@@ -71,7 +68,7 @@ class FormularioEmail extends Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.props.emails.map((email, index) => (
+            {this.props.state.emails.map((email, index) => (
               <TableRow key={index}>
                 <TableCell align="center" component="th" scope="row">
                   {email.email}

@@ -35,9 +35,9 @@ const styles = {
 class FormularioTelefone extends Component {
 
 
-  constructor({ props, classes }) {
+  constructor(props) {
     super(props);
-    this.classes = classes;
+    this.classes = props.classes;
     this.state = {
       tiposTelefone: ['CELULAR', 'RESIDENCIAL', 'COMERCIAL']
     }
@@ -54,7 +54,7 @@ class FormularioTelefone extends Component {
           <Grid item xs={12} sm={12} md={4}>
             <InputMask
               mask="(99) 99999-9999"
-              value={this.props.numero}
+              value={this.props.state.numero}
               onChange={this.props.handlenumero}
             >
               {() => <TextField
@@ -65,7 +65,7 @@ class FormularioTelefone extends Component {
           </Grid>
           <Grid item xs={12} sm={12} md={4}>
             <Select
-              value={this.props.tipo}
+              value={this.props.state.tipo}
               onChange={this.props.handletipo}
               inputProps={{
                 id: 'tipo'
@@ -92,7 +92,7 @@ class FormularioTelefone extends Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.props.telefones.map((telefone, index) => (
+            {this.props.state.telefones.map((telefone, index) => (
               <TableRow key={index}>
                 <TableCell align="center" component="th" scope="row">
                   {telefone.numero}

@@ -28,9 +28,9 @@ const styles = {
 class FormularioEndereco extends Component {
 
 
-  constructor({ props, classes }) {
+  constructor(props) {
     super(props);
-    this.classes = classes;
+    this.classes = props.classes;
     this.state = {
       ufs: []
     }
@@ -57,7 +57,7 @@ class FormularioEndereco extends Component {
           <Grid item xs={12} sm={12} md={4}>
             <InputMask
               mask="99999-999"
-              value={this.props.cep}
+              value={this.props.state.endereco.cep}
               onChange={this.props.handleChangeCEP}
               disabled={!isAdm()}
             >
@@ -74,7 +74,7 @@ class FormularioEndereco extends Component {
               name="logradouro"
               label="Logradouro:"
               id="logradouro"
-              value={this.props.logradouro}
+              value={this.props.state.endereco.logradouro}
               onChange={this.props.handleLogradouro}
               validators={['required']}
               errorMessages={['Logradouro é obrigatório.']}
@@ -86,7 +86,7 @@ class FormularioEndereco extends Component {
               name="bairro"
               label="Bairro:"
               id="bairro"
-              value={this.props.bairro}
+              value={this.props.state.endereco.bairro}
               onChange={this.props.handleBairro}
               validators={['required']}
               errorMessages={['Bairro é obrigatório.']}
@@ -98,14 +98,14 @@ class FormularioEndereco extends Component {
               name="complemento"
               label="Complemento:"
               id="complemento"
-              value={this.props.complemento}
+              value={this.props.state.endereco.complemento}
               onChange={this.props.handleComplemento}
               disabled={!isAdm()}
             />
           </Grid>
           <Grid item xs={12} sm={12} md={4}>
             <Select
-              value={this.props.uf}
+              value={this.props.state.endereco.uf}
               onChange={this.props.handleChangeUf}
               displayEmpty
               disabled={!isAdm()}
@@ -120,7 +120,7 @@ class FormularioEndereco extends Component {
           </Grid>
           <Grid item xs={12} sm={12} md={4}>
             <Select
-              value={this.props.cidade}
+              value={this.props.state.endereco.cidade}
               onChange={this.props.handleCidade}
               displayEmpty
               disabled={!isAdm()}
@@ -130,7 +130,7 @@ class FormularioEndereco extends Component {
               }}
             >
               <MenuItem value="" selected>Cidade</MenuItem>)
-                  {this.props.cidades.map(cidade => <MenuItem key={cidade.id} value={cidade.id}>{cidade.nome}</MenuItem>)}
+                  {this.props.state.cidades.map(cidade => <MenuItem key={cidade.id} value={cidade.id}>{cidade.nome}</MenuItem>)}
             </Select>
           </Grid>
         </Grid>
