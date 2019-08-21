@@ -46,8 +46,9 @@ const styles = {
 class CadastroClientes extends Component {
 
 
-  constructor(props) {
+  constructor({ props, classes }) {
     super(props);
+    this.classes = classes;
     this.state = {
       id: null,
       nome: '',
@@ -222,8 +223,7 @@ class CadastroClientes extends Component {
         <ValidatorForm ref="form" onSubmit={this.handlerSubmit} autoComplete="off">
 
           <FormularioCliente
-            nome={this.state.nome}
-            cpf={this.state.cpf}
+            {...this}
             onChangeNome={e => this.setState({ nome: e.target.value })}
             onChangeCPF={e => this.setState({ cpf: e.target.value })} />
 
@@ -241,8 +241,8 @@ class CadastroClientes extends Component {
             handletipo={e => this.setState({ tipo: e.target.value })} />
 
           <FormularioEmail
-            {...this}            
-            handleEmail={e => this.setState({ email: e.target.value })}            
+            {...this}
+            handleEmail={e => this.setState({ email: e.target.value })}
           />
 
           <Grid item xs={12} container direction="row" justify="space-between">

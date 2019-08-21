@@ -7,7 +7,6 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { Paper } from '@material-ui/core';
-import { withStyles } from "@material-ui/core/styles";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -20,20 +19,7 @@ import InputMask from 'react-input-mask';
 
 import { isAdm } from "../../../services/auth";
 
-const styles = {
-  conteudo: {
-    marginTop: 50
-  },
-  grid: {
-    marginLeft: 10
-  },
-  acoes: {
-    marginRight: 15
-  }
-};
-
-class FormularioTelefone extends Component {
-
+export default class FormularioTelefone extends Component {
 
   constructor(props) {
     super(props);
@@ -115,5 +101,3 @@ class FormularioTelefone extends Component {
     )
   }
 }
-
-export default withStyles(styles)(FormularioTelefone);

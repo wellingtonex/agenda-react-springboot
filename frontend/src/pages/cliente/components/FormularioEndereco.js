@@ -7,26 +7,12 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { Paper } from '@material-ui/core';
-import { withStyles } from "@material-ui/core/styles";
 import api from '../../../services/api'
 import InputMask from 'react-input-mask';
 import { TextValidator } from 'react-material-ui-form-validator';
 import { isAdm } from "../../../services/auth";
 
-const styles = {
-  conteudo: {
-    marginTop: 50
-  },
-  grid: {
-    marginLeft: 10
-  },
-  acoes: {
-    marginRight: 15
-  }
-};
-
-class FormularioEndereco extends Component {
-
+export default class FormularioEndereco extends Component {
 
   constructor(props) {
     super(props);
@@ -34,7 +20,6 @@ class FormularioEndereco extends Component {
     this.state = {
       ufs: []
     }
-
   }
 
   componentDidMount() {
@@ -138,5 +123,3 @@ class FormularioEndereco extends Component {
     )
   }
 }
-
-export default withStyles(styles)(FormularioEndereco);

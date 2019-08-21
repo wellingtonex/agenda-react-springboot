@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { Paper } from '@material-ui/core';
-import { withStyles } from "@material-ui/core/styles";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -16,19 +15,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { TextValidator } from 'react-material-ui-form-validator';
 import { isAdm } from "../../../services/auth";
 
-const styles = {
-  conteudo: {
-    marginTop: 50
-  },
-  grid: {
-    marginLeft: 10
-  },
-  acoes: {
-    marginRight: 15
-  }
-};
-
-class FormularioEmail extends Component {
+export default class FormularioEmail extends Component {
 
   constructor(props) {
     super(props);
@@ -86,5 +73,3 @@ class FormularioEmail extends Component {
     )
   }
 }
-
-export default withStyles(styles)(FormularioEmail);

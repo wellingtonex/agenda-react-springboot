@@ -3,30 +3,16 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import { Paper } from '@material-ui/core';
-import { withStyles } from "@material-ui/core/styles";
 import { TextValidator } from 'react-material-ui-form-validator';
 import InputMask from 'react-input-mask';
 import { isAdm } from "../../../services/auth";
 
-const styles = {
-  conteudo: {
-    marginTop: 50
-  },
-  grid: {
-    marginLeft: 10
-  },
-  acoes: {
-    marginRight: 15
-  }
-};
-
-class FormularioCliente extends Component {
+export default class FormularioCliente extends Component {
 
 
-  constructor({ props, classes }) {
+  constructor(props) {
     super(props);
-    this.classes = classes;
-
+    this.classes = props.classes;
   }
 
   render() {
@@ -44,7 +30,7 @@ class FormularioCliente extends Component {
               name="nome"
               label="Nome:"
               id="nome"
-              value={this.props.nome}
+              value={this.props.state.nome}
               onChange={this.props.onChangeNome}
               validators={['required']}
               errorMessages={['Nome é obrigatorio.']}
@@ -54,7 +40,7 @@ class FormularioCliente extends Component {
           <Grid item xs={12} sm={12} md={4}>
             <InputMask
               mask="999.999.999-99"
-              value={this.props.cpf}
+              value={this.props.state.cpf}
               onChange={this.props.onChangeCPF}
               disabled={!isAdm()}
             >
@@ -63,7 +49,7 @@ class FormularioCliente extends Component {
                 label="CPF:"
                 name="cpf"
                 type="text"
-                
+
               />}
             </InputMask>
 
@@ -73,5 +59,3 @@ class FormularioCliente extends Component {
     )
   }
 }
-
-export default withStyles(styles)(FormularioCliente);
